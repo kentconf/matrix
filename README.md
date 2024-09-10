@@ -1,2 +1,3 @@
 # matrix
-Bar Matrix scheduling tool
+Bar Matrix scheduling tool<br>
+For use with ASA
