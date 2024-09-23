@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+   <TITLE>Bar matrix for ASA</TITLE>
+   <script src=bar_matrix.js></script>
+<style>
+div {
+ background-color: #dddddd;
+ border-radius: 15px;
+ display:inline-block;
+ margin: 2px;
+}
+#specBoxes { background-color: white; }
+input {
+ width: 70px;
+}
+textarea {
+ width: 75px;
+ height: 200px;
+}
+.link { font-size:20pt;position:relative;top:0px;font-weight:bold }
+a:hover { font-color:#8E1933 }
+.bold { font-weight:bold }
+.wide { width: 120px }
+.noUL { text-decoration: none;font-size:30pt }
+
+</style>
+<script>
+HTML_version = "1.7";
+</script>
+</HEAD>
+<BODY BGCOLOR="#f5f5f5" onload=load() onvisibilitychange=save()>
+<input type=text value="24-8888 CUSTOMER Street" style="font-size:18pt;margin:10px;width:500px" id=o_id onkeyup=setTitle()>
+<input type=button value=Import... onclick=t_import();setTitle()>
+<input type=button value=Export... onclick=t_export()>
+<input type=button class=wide value="Generate CSV" onclick=CSV()> <br>
+
+<div id=d_takeoff style=display:none;padding:5px>
+<textarea id=takeoff style=width:100%;height:200px>Paste Bluebeam takeoff here from Excel
+or define: 1:2400 BEAM[300x400](50 cover)(4.N20,N10-300 ligs)
+or define: 2:CIRC-UBAR[DIAM][BAR-SPACING](50 cover)
+or define: 3:PADFTG[LENGTH,WIDTH,BAR-SPACING/WBARS?](30/50/50 COVER)
+or define: TMR CULVERT(...)
+DUAL N16 LBAR VARY (700 LAP):
+1000
+(5) INTERIM VARIED BARS
+2000
+(10)
+500
+
+TEST
+CIRC-UBAR[5000][N12-200](50 cover)
+3:PADFTG[710x670x310,3/N12](30/50/50 COVER)</textarea>
+<br>
+<input type=button value="Full Order -&gt;" onclick=order()>
+<input type=button value="Define -&gt;" onclick=define()>
+<!--div id=dl2 style=padding:5px-->Save definitions and elements as <input type=text class=wide id=filename2 value="Title.txt"><input type=button class=wide value=Download onclick=dTXT()> or
+<input type=button value="Load" onclick=txtLoad()>
+</div>
+
+<span id=specBoxes><div id=el1Spec class=el onclick=change(this)>
+<table cellpadding=3>
+<tr><td><input id=el1Name class="bold wide" value=Element><td><input id=el1Length value="Length/Area" onkeyup=change(this)>
+<td><input id=el1Lengths value=Lengths onkeyup=change(this)>
+<tr><td>Product (+/x)<td>Spacing/[L<sup>t</sup>]<td>Number
+&nbsp;&nbsp;&nbsp;<a href="javascript:showComments('el1')">&gt;</a>
+<tr><td><textarea id=el1p class=wide onkeyup=product_change(this)></textarea>
+<td><textarea id=el1s onkeyup=change(this)></textarea>
+<td><textarea id=el1n></textarea>
+</table>&nbsp;&nbsp;Cover
+<input type=text id=el1c value=50/50/50>
+Lap <input type=text id=el1l value="N12:600 N16:800" style=width:130px></div></span><div style=container:positioned;position:absolute;right:0px;bottom:0px;text-align:center;padding:5px>
+<a href=javascript:showTakeoff() class="link noUL">&#x2191;</a><!--br><a href=javascript:change() class="link noUL">&#10227;</a IT HAPPENS EVERY KEYSTROKE AGAIN--><br>
+<a href=javascript:reset() class="link noUL">&#x1F6C7;</a><br>
+<a href=javascript:version() class="link noUL">?</a><br>
+<a href=javascript:newSpec() class="link noUL">+</a></div>
+<div id=dl style=display:none;padding:5px>Download CSV file visbile below as <input type=text class=wide id=filename value="EB-IB.csv"><input type=button class=wide value=Download onclick=dCSV()>
+<textarea id=CSV style=width:100%;height:200px></textarea></div>
+<div id=comments style="display:none;container:positioned;position:fixed;left:0px;top:0px;width:100%;height:100%;text-align:center;vertical-align:middle;padding:5px; border-radius: 0px;background-color:rgba(0,0,0,0.5)" text-align:center>
+<table style="width:100%;height:100%"><tr><tr height=200px bgcolor=white valign=center><td>Bar<br>
+<textarea id=pComments class=wide disabled></textarea>
+<td>Mark<br>
+<textarea id=tMark></textarea>
+<td width=100%>Comment<br>
+<textarea id=tComments onkeyup=change(this) style="width:100%"></textarea><tr></table>
+</div></div>
+</BODY>
+</HTML>
