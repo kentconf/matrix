@@ -1,0 +1,20 @@
+Bar Matrix v4.3 
+Paste entire file into element definition box
+---
+Paste Bluebeam takeoff here from Excel
+or define: 1:2400 BEAM[300x400](50 cover)(4.N20,N10-300 ligs)
+or define: 2:CIRC-UBAR[DIAM][BAR-SPACING](50 cover)
+or define: 3:PADFTG[LENGTH,WIDTH,BAR-SPACING/WBARS?](30/50/50 COVER)
+or define: TMR CULVERT(...)
+DUAL N16 LBAR VARY (700 LAP):
+1000
+(5) INTERIM VARIED BARS
+2000
+(10)
+500
+
+TEST
+CIRC-UBAR[5000][N12-200](50 cover)
+3:PADFTG[710x670x310,3/N12](30/50/50 COVER)
+]-[
+Matrix9|lig, starter test v1642|Kent|10m|1|N12ST/N10(300x400)|400/300|26/34|50/50/50|N12:600 N16:800|R|GOOD| |1|N12S6|5400|-|1/50/50|N12:600 N16:800|B|G|10m| |N12S6|5400|2|50/50/50|NaN/-/-|Y|GREAT|G|1| |5400|NaN|50/50/50|N12:600 N16:800//|Y|Element5|Length/Area|B|| |-|50/50/50|N12:600 N16:800|Y|Element6|Length/Area|Lengths||-|-|50/50/50|N12:600 N16:800|Y|||50/50/50|N12:600 N16:800|Y|-| |Length/Area|||||50/50/50|N12:600 N16:800|||undefined|
